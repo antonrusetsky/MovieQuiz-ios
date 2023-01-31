@@ -78,12 +78,26 @@ final class MovieQuizViewController: UIViewController {
         let currentQuestion = questions[currentQuestionIndex]
         let givenAnswer = true
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+        let myButton = sender as UIButton
+        myButton.isEnabled = false
+          
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000))
+        {
+          myButton.isEnabled = true
+        }
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
         let givenAnswer = false
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+        let myButton = sender as UIButton
+        myButton.isEnabled = false
+          
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000))
+        {
+          myButton.isEnabled = true
+        }
     }
     
     @IBOutlet private var imageView: UIImageView!
@@ -98,8 +112,6 @@ final class MovieQuizViewController: UIViewController {
         
         let action = UIAlertAction(title: result.buttonText, style: .default) { _ in
             self.currentQuestionIndex = 0
-            
-            // заново показываем первый вопрос
             let firstQuestion = self.questions[self.currentQuestionIndex]
             let viewModel = self.convert(model: firstQuestion)
             self.show(quiz: viewModel)
@@ -149,7 +161,9 @@ final class MovieQuizViewController: UIViewController {
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.imageView.layer.borderColor = UIColor.ypBlack.cgColor
             self.showNextQuestionOrResults()
         }
     }
