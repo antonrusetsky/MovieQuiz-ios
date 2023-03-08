@@ -128,17 +128,23 @@
                                 </subviews>
                                 <color key="backgroundColor" name="black"/>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nws-kJ-P5X">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="black"/>
                         <color key="tintColor" name="black"/>
                         <constraints>
+                            <constraint firstItem="nws-kJ-P5X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5Vp-HV-tCo"/>
                             <constraint firstItem="ATV-Fq-4wk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CNY-zi-soI"/>
                             <constraint firstItem="ATV-Fq-4wk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="QhM-9c-S5b"/>
+                            <constraint firstItem="nws-kJ-P5X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vo8-qA-x4t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ATV-Fq-4wk" secondAttribute="trailing" constant="20" id="nWf-Li-bq0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="nws-kJ-P5X" id="NHX-C1-6Qe"/>
                         <outlet property="counterLabel" destination="Yrz-kq-pbm" id="OW5-k9-GNx"/>
                         <outlet property="imageView" destination="6kK-OT-G5F" id="mDH-nZ-Kof"/>
                         <outlet property="textLabel" destination="ed7-2Q-djZ" id="1dL-Xz-81o"/>
